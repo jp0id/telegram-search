@@ -1,30 +1,37 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { SidebarMenuItem, SidebarMenuButton } from '../ui/Sidebar'
 
-const props = defineProps<{
+interface SidebarSelectorProps {
   path: string
   icon: string
   name: string
-}>()
+}
+
+const props = defineProps<SidebarSelectorProps>()
 
 const router = useRouter()
 const route = useRoute()
 
 const isCurrentPage = computed(() => route.path === props.path)
+
+const handleClick = (): void => {
+  router.push(props.path)
+}
 </script>
 
 <template>
-  <div
-    :class="{ 'bg-neutral-100 dark:bg-gray-700': isCurrentPage }"
-    class="px-4 text-primary-900 transition-colors hover:bg-neutral-100 dark:text-gray-100 dark:hover:bg-gray-700"
-    @click="router.push(props.path)"
-  >
-    <div
-      class="w-full flex cursor-pointer items-center gap-4 p-2"
+  <SidebarMenuItem>
+    <SidebarMenuButton
+      :is-active="isCurrentPage"
+      as-child
+      @click="handleClick"
     >
-      <span :class="icon" class="h-5 w-5 flex-shrink-0" />
-      <span>{{ name }}</span>
-    </div>
-  </div>
+      <div class="flex w-full cursor-pointer items-center gap-3">
+        <span :class="icon" class="h-4 w-4 flex-shrink-0" />
+        <span>{{ name }}</span>
+      </div>
+    </SidebarMenuButton>
+  </SidebarMenuItem>
 </template>

@@ -83,3 +83,33 @@ html.dark::view-transition-new(root) {
 
 :root { --is-dark: 0%; }
 .dark { --is-dark: 100%; }
+
+/* Sidebar CSS Variables */
+:root {
+  --sidebar-width: 16rem;
+  --sidebar-width-mobile: 18rem;
+}
+
+/* Sidebar component styles for better integration */
+[data-sidebar] {
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-sidebar="sidebar"] {
+  background-color: hsl(var(--background));
+  border-right: 1px solid hsl(var(--border));
+}
+
+[data-sidebar="sidebar"][data-state="collapsed"] {
+  width: 3rem;
+}
+
+/* Mobile sidebar overlay */
+@media (max-width: 1024px) {
+  [data-sidebar="sidebar"] {
+    position: fixed;
+    z-index: 40;
+    height: 100vh;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+}
