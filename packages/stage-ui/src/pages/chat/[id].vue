@@ -17,7 +17,6 @@ const id = route.params.id
 const chatStore = useChatStore()
 const messageStore = useMessageStore()
 
-// FIXME: the performance issue
 const messagesMap = computed(() => messageStore.useMessageChatMap(id.toString()))
 const sortedChatMessageIds = computed<string[]>(() =>
   Array.from(messagesMap.value.keys())

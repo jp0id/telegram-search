@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { inject, computed, type ComputedRef } from 'vue'
-import { cn } from '../../lib/utils'
+import type { ComputedRef } from 'vue'
+
+import { computed, inject } from 'vue'
+
+import { cn } from '../../../lib/utils'
 
 // Sidebar context
 interface SidebarState {
@@ -36,7 +39,7 @@ const { open, isMobile, openMobile } = sidebarContext
 // Computed classes
 const sidebarClasses = computed(() => {
   const baseClasses = 'flex h-full w-[--sidebar-width] flex-col'
-  
+
   if (isMobile.value) {
     return cn(
       baseClasses,
@@ -45,19 +48,19 @@ const sidebarClasses = computed(() => {
       openMobile.value
         ? 'translate-x-0'
         : props.side === 'left'
-        ? '-translate-x-full'
-        : 'translate-x-full',
+          ? '-translate-x-full'
+          : 'translate-x-full',
       'bg-background border-r border-border dark:bg-gray-800 dark:border-gray-700',
-      props.class
+      props.class,
     )
   }
-  
+
   return cn(
     baseClasses,
     'bg-background border-r border-border dark:bg-gray-800 dark:border-gray-700',
     props.variant === 'floating' && 'rounded-lg shadow-md',
     props.variant === 'inset' && 'rounded-lg border-2',
-    props.class
+    props.class,
   )
 })
 </script>

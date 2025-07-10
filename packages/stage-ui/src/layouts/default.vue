@@ -69,7 +69,7 @@ function toggleActiveChatGroup(group: ChatGroup): void {
 
 <template>
   <SidebarProvider>
-    <div class="flex min-h-screen w-full">
+    <div class="min-h-screen w-full flex">
       <!-- Sidebar -->
       <Sidebar class="border-r border-border">
         <!-- Sidebar Header with Search -->
@@ -79,7 +79,7 @@ function toggleActiveChatGroup(group: ChatGroup): void {
             <input
               v-model="searchParams"
               type="text"
-              class="w-full border border-input rounded-md bg-background px-3 py-2 pl-9 text-sm ring-offset-background transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              class="w-full border border-input rounded-md bg-background px-3 py-2 pl-9 text-sm ring-offset-background transition-colors disabled:cursor-not-allowed file:border-0 file:bg-transparent file:text-sm placeholder:text-muted-foreground file:font-medium disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-ring"
               placeholder="Search"
             >
           </div>
@@ -191,9 +191,9 @@ function toggleActiveChatGroup(group: ChatGroup): void {
       <!-- Main Content Area -->
       <SidebarInset class="flex-1">
         <!-- Mobile trigger and login banner -->
-        <header class="flex h-16 shrink-0 items-center gap-2 border-b border-border px-4">
+        <header class="h-16 flex shrink-0 items-center gap-2 border-b border-border px-4">
           <SidebarTrigger class="-ml-1" />
-          
+
           <!-- Login prompt banner -->
           <div
             v-if="!isLoggedIn"

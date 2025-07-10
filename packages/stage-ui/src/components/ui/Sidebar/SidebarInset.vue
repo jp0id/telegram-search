@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { inject, computed, type ComputedRef } from 'vue'
-import { cn } from '../../lib/utils'
+import type { ComputedRef } from 'vue'
+
+import { inject } from 'vue'
+
+import { cn } from '../../../lib/utils'
 
 // Sidebar context
 interface SidebarState {
@@ -26,7 +29,7 @@ if (!sidebarContext) {
 const { isMobile, openMobile, setOpenMobile } = sidebarContext
 
 // Close mobile sidebar when clicking on backdrop
-const handleBackdropClick = (): void => {
+function handleBackdropClick(): void {
   if (isMobile.value && openMobile.value) {
     setOpenMobile(false)
   }
@@ -41,7 +44,7 @@ const handleBackdropClick = (): void => {
       class="fixed inset-0 z-30 bg-black/50 transition-opacity"
       @click="handleBackdropClick"
     />
-    
+
     <slot />
   </main>
 </template>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { provide, ref, computed, type Ref } from 'vue'
+import type { Ref } from 'vue'
+
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
+import { computed, provide, ref } from 'vue'
 
 // Define sidebar state interface
 interface SidebarState {
@@ -47,11 +49,11 @@ const open = computed({
 const openMobile = ref(false)
 
 // Functions
-const setOpen = (value: boolean): void => {
+function setOpen(value: boolean): void {
   open.value = value
 }
 
-const setOpenMobile = (value: boolean): void => {
+function setOpenMobile(value: boolean): void {
   openMobile.value = value
 }
 

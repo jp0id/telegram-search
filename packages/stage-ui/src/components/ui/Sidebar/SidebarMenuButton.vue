@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { cn } from '../../lib/utils'
+
+import { cn } from '../../../lib/utils'
 
 interface SidebarMenuButtonProps {
   asChild?: boolean
@@ -20,12 +21,12 @@ const props = withDefaults(defineProps<SidebarMenuButtonProps>(), {
 const buttonClasses = computed(() => {
   return cn(
     'peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring active:bg-accent active:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0',
-    props.variant === 'outline' &&
-      'border border-border bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
+    props.variant === 'outline'
+    && 'border border-border bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
     props.size === 'sm' && 'text-xs p-1',
     props.size === 'lg' && 'text-base p-3',
     props.isActive && 'bg-accent font-medium text-accent-foreground',
-    props.class
+    props.class,
   )
 })
 </script>
@@ -40,7 +41,7 @@ const buttonClasses = computed(() => {
   >
     <slot />
   </div>
-  
+
   <button
     v-else
     :class="buttonClasses"

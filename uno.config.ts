@@ -45,6 +45,11 @@ export function sharedUnoConfig() {
         ],
       },
     },
+    theme: {
+      spacing: {
+        4: '1rem',
+      },
+    },
   })
 }
 
